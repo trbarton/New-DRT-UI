@@ -6,7 +6,9 @@ import AccountGroup from './AccountGroup';
 
 const ElementBackground = styled.div`
   position: fixed;
-  width: 80px;
+  width: 5%;
+  min-width: 60px;
+  max-width: 80px;
   top: 0;
   left: 0;
   bottom: 0;

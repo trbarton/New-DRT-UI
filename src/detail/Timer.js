@@ -18,6 +18,7 @@ const TimeBold = styled.h2`
   color: white;
   font-size: 6em;
   margin: 0;
+  font-variant-numeric: tabular-nums;
 `
 
 const PaleSmall = styled.h4`
@@ -28,11 +29,51 @@ const PaleSmall = styled.h4`
   font-size: 0.9em;
 `
 
-export default () => {
-  return (
-    <BackgroundElement>
-      <PaleSmall>RACE TIME ELAPSED</PaleSmall>
-      <TimeBold>14:33</TimeBold>
-    </BackgroundElement>
-  )
+class Timer extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      seconds: '00',
+      minutes: '00'
+    }
+    this.secondsRemaining = 0;
+
+    this.tick = this.tick.bind(this);
+  }
+
+  componentDidMount () {
+    setInterval(this.tick, 1000);
+  }
+
+  tick() {
+    var min = Math.floor(this.secondsRemaining / 60);
+    var sec = this.secondsRemaining - (min * 60);
+    this.setState({
+      minutes: min,
+      seconds: sec
+    })
+    if (sec < 10) {
+      this.setState({
+        seconds: "0" + this.state.seconds,
+      })
+    }
+    if (min < 10) {
+      this.setState({
+        minutes: "0" + min,
+      })
+    }
+    this.secondsRemaining++
+  }
+
+  render() {
+    return (
+      <BackgroundElement>
+        <PaleSmall>RACE TIME ELAPSED</PaleSmall>
+        <TimeBold>{this.state.minutes}:{this.state.seconds}</TimeBold>
+      </BackgroundElement>
+    )
+  }
 }
+
+export default Timer;

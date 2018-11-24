@@ -1,7 +1,7 @@
 import React from 'react';
 import account from './svg-icons/account.svg';
 
-const IconSize = '40px';
+const IconSize = '30px';
 
 const IconStyle = {
   margin: '5px'

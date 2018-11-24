@@ -10,7 +10,7 @@ const IconContainer = styled.div`
   flex-direction: column;
 `;
 
-const IconSize = '40px';
+const IconSize = '30px';
 
 const IconStyle = {
   margin: '5px'
